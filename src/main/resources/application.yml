@@ -1,0 +1,21 @@
+server:
+  port: 8082
+spring:
+  profiles:
+    active: dev
+  aop:
+    auto: true
+
+security:
+  basic:
+    enable: false
+  oauth2:
+    resource:
+      filter-order: 3
+
+# Mybatis配置
+mybatis:
+    mapperLocations: classpath:mapper/*.xml
+#    configLocation: classpath:mybatis.xml
+
+

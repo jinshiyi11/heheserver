@@ -1,4 +1,4 @@
-package com.shuai.heheserver;
+package com.shuai.hehe.server;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

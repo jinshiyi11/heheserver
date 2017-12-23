@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    driver-class-nickName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/hehe?useUnicode=true&characterEncoding=utf-8
+    username: hehe_user
+    password: yidao123
+  jpa:
+    hibernate:
+      ddl-auto: update
