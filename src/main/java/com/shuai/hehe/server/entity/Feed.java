@@ -30,6 +30,19 @@ public class Feed {
      */
     public static int STATE_HIDDEN=0;
 
+    public Feed(){
+
+    }
+
+    public Feed(Feed feed) {
+        this.mId = feed.mId;
+        this.mType = feed.mType;
+        this.mTitle = feed.mTitle;
+        this.mContent = feed.mContent;
+        this.mFrom = feed.mFrom;
+        this.mShowTime = feed.mShowTime;
+    }
+
     public int getId() {
         return mId;
     }

@@ -15,7 +15,9 @@ public enum ErrorCode {
     // 发送验证码失败
     ERROR_SEND_VERIFICATION_CODE(4,"send verification code fail"),
     // 验证码不正确
-    ERROR_INVALID_VERIFICATION_CODE(5,"invalid verification code")
+    ERROR_INVALID_VERIFICATION_CODE(5,"invalid verification code"),
+    //
+    ERROR_FAV_EXIST(100,"已经收藏过"),
     ;
 
     private int mErrorCode;

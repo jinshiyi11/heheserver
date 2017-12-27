@@ -12,11 +12,27 @@ import java.util.List;
 @Mapper
 public interface FeedMapper {
     @SelectProvider(type = SqlBuilder.class, method = "buildSelectVideoSql")
+    @Results({
+            @Result(id=true,property="mId",column="id"),
+            @Result(property="mType",column="type"),
+            @Result(property="mTitle",column="title"),
+            @Result(property="mContent",column="content"),
+            @Result(property="mFrom",column="from"),
+            @Result(property="mShowTime",column="show_time",typeHandler = TimeHandler.class)
+    })
     List<Feed> getVideoList(
             @Param("id") String id,
             @Param("count") int count);
 
     @SelectProvider(type = SqlBuilder.class, method = "buildSelectAlbumSql")
+    @Results({
+            @Result(id=true,property="mId",column="id"),
+            @Result(property="mType",column="type"),
+            @Result(property="mTitle",column="title"),
+            @Result(property="mContent",column="content"),
+            @Result(property="mFrom",column="from"),
+            @Result(property="mShowTime",column="show_time",typeHandler = TimeHandler.class)
+    })
     List<Feed> getAlbumList(
             @Param("id") String id,
             @Param("count") int count);
@@ -29,9 +45,31 @@ public interface FeedMapper {
     })
     List<PicInfo> getAlbumPics(@Param("feedId") int feedId);
 
+    @Select("SELECT * FROM hot_album WHERE id=#{feedId}")
+    @Results({
+            @Result(id=true,property="mId",column="id"),
+            @Result(property="mType",column="type"),
+            @Result(property="mTitle",column="title"),
+            @Result(property="mContent",column="content"),
+            @Result(property="mFrom",column="from"),
+            @Result(property="mShowTime",column="show_time",typeHandler = TimeHandler.class)
+    })
+    Feed getAlbumFeed(@Param("feedId")int feedId);
+
+    @Select("SELECT * FROM hot_video WHERE id=#{feedId}")
+    @Results({
+            @Result(id=true,property="mId",column="id"),
+            @Result(property="mType",column="type"),
+            @Result(property="mTitle",column="title"),
+            @Result(property="mContent",column="content"),
+            @Result(property="mFrom",column="from"),
+            @Result(property="mShowTime",column="show_time",typeHandler = TimeHandler.class)
+    })
+    Feed getVideoFeed(@Param("feedId")int feedId);
+
     class SqlBuilder {
         public String buildSelectVideoSql(@Param("id") String id, @Param("count") int count) {
-            String sql = "SELECT id,type,title,content,`from`,insert_time,show_time FROM hot_video WHERE state!=0";
+            String sql = "SELECT id,type,title,content,`from`,show_time FROM hot_video WHERE state!=0";
 
             if (count > 0) {
                 sql += " AND show_time>'" + id+"'";
@@ -44,7 +82,7 @@ public interface FeedMapper {
         }
 
         public String buildSelectAlbumSql(@Param("id")String id, @Param("count")int count) {
-            String sql = "SELECT id,type,title,content,`from`,insert_time,show_time FROM hot_album WHERE state!=0";
+            String sql = "SELECT id,type,title,content,`from`,show_time FROM hot_album WHERE state!=0";
 
             if (count > 0) {
                 sql += " AND show_time>'" + id+"'";
