@@ -5,13 +5,14 @@ spring:
     active: dev
   aop:
     auto: true
-
-security:
-  basic:
-    enable: false
-  oauth2:
-    resource:
-      filter-order: 3
+shiro:
+  loginUrl: '/test.html'
+#security:
+#  basic:
+#    enable: false
+#  oauth2:
+#    resource:
+#      filter-order: 3
 
 # Mybatis配置
 mybatis:

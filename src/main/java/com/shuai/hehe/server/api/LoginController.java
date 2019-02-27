@@ -1,17 +1,11 @@
 package com.shuai.hehe.server.api;
 
-import com.shuai.hehe.server.entity.User;
 import com.shuai.hehe.server.mapper.UserMapper;
 import com.shuai.hehe.server.response.ResponseInfo;
 import okhttp3.OkHttpClient;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.oauth2.client.DefaultOAuth2ClientContext;
-import org.springframework.security.oauth2.client.OAuth2RestTemplate;
-import org.springframework.security.oauth2.client.token.DefaultAccessTokenRequest;
-import org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordAccessTokenProvider;
-import org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordResourceDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -98,26 +92,27 @@ public class LoginController {
         String url = "http://" + request.getServerName() + ":"
                 + request.getServerPort()+request.getContextPath() + "/oauth/token";
         mLogger.info("login url:" + url);
-        ResourceOwnerPasswordResourceDetails resource = new ResourceOwnerPasswordResourceDetails();
-        resource.setAccessTokenUri(url);
-        resource.setClientId("ClientId");
-        resource.setClientSecret("secret");
-        resource.setGrantType("password");
+//        ResourceOwnerPasswordResourceDetails resource = new ResourceOwnerPasswordResourceDetails();
+//        resource.setAccessTokenUri(url);
+//        resource.setClientId("ClientId");
+//        resource.setClientSecret("secret");
+//        resource.setGrantType("password");
+//
+//        resource.setUsername(phone);
+//        resource.setPassword(password);
+//        OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resource,
+//                new DefaultOAuth2ClientContext(new DefaultAccessTokenRequest()));
+//        restTemplate.setAccessTokenProvider(new ResourceOwnerPasswordAccessTokenProvider());
+//        org.springframework.security.oauth2.common.OAuth2AccessToken token = restTemplate.getAccessToken();
+//        ResponseInfo<TokenInfo> result = new ResponseInfo<>();
+//        TokenInfo tokenInfo = new TokenInfo();
+//        tokenInfo.token = token.getValue();
+//        tokenInfo.expiresIn = token.getExpiresIn();
+//        User user = mUserMapper.getByPhone(phone);
+//        tokenInfo.uid = String.valueOf(user.getId());
+//        result.setData(tokenInfo);
 
-        resource.setUsername(phone);
-        resource.setPassword(password);
-        OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resource,
-                new DefaultOAuth2ClientContext(new DefaultAccessTokenRequest()));
-        restTemplate.setAccessTokenProvider(new ResourceOwnerPasswordAccessTokenProvider());
-        org.springframework.security.oauth2.common.OAuth2AccessToken token = restTemplate.getAccessToken();
-        ResponseInfo<TokenInfo> result = new ResponseInfo<>();
-        TokenInfo tokenInfo = new TokenInfo();
-        tokenInfo.token = token.getValue();
-        tokenInfo.expiresIn = token.getExpiresIn();
-        User user = mUserMapper.getByPhone(phone);
-        tokenInfo.uid = String.valueOf(user.getId());
-        result.setData(tokenInfo);
-
-        return result;
+//        return result;
+        return null;
     }
 }

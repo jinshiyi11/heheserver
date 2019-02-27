@@ -4,6 +4,10 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/hehe?useUnicode=true&characterEncoding=utf-8
     username: hehe_user
     password: yidao123
+#    type: POOLED
+#    poolPingQuery: "SELECT 1"
+#    poolPingEnabled: true
+#    poolPingConnectionsNotUsedFor: 3600000
   jpa:
     hibernate:
       ddl-auto: update
