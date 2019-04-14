@@ -4,6 +4,7 @@ create user hehe_user IDENTIFIED by 'xxx';
 grant select,update,delete ,insert,create,alter on hehe.* to hehe_user;
 #show grants for hehe_user;
 
+use hehe;
 #用户信息
 CREATE TABLE IF NOT EXISTS user(
 id int(10) NOT NULL AUTO_INCREMENT,

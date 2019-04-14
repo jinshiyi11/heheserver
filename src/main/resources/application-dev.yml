@@ -15,5 +15,7 @@ spring:
     format-sql: true
 
 logging:
+  file: logs/application-debug.log
   level:
+    root: INFO
     org.springframework.security: DEBUG
